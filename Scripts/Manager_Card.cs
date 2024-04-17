@@ -11,6 +11,7 @@ public enum Card_Type
 
 public class Manager_Card : MonoBehaviour
 {
+    public Transform tr_play;
     public Sprite[] sp_card;
     public Card_Type[] card_type_index;
     public int[] card_number_index;
@@ -84,6 +85,7 @@ public class Manager_Card : MonoBehaviour
         obj_card.GetComponent<card_obj>().type = type;
         obj_card.GetComponent<card_obj>().card_type = this.card_type_index[type];
         obj_card.GetComponent<card_obj>().card_number = this.card_number_index[type];
+        obj_card.GetComponent<card_obj>().transform_play = this.tr_play;
         return obj_card;
     }
 

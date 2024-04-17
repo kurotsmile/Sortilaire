@@ -8555,6 +8555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b579a06feb0465244b4252ea978dee65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tr_play: {fileID: 3622533200462406977}
   sp_card:
   - {fileID: 21300000, guid: 415edf25dab113d42a4bc3494ecc4b7d, type: 3}
   - {fileID: 21300000, guid: 03cb3607b04e0b34faa2b349bbaf7870, type: 3}

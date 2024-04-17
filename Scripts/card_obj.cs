@@ -18,6 +18,7 @@ public class card_obj : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHan
     public bool is_open = false;
     private bool is_select = false;
     private Transform transform_pater;
+    public Transform transform_play;
     private List<GameObject> list_card_group = new List<GameObject>();
 
     public void close()
@@ -72,6 +73,7 @@ public class card_obj : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHan
         if (this.is_open)
         {
             Vector3 pos_mouse= Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            this.transform.SetParent(transform_play);
             this.transform.position = new Vector3(pos_mouse.x, pos_mouse.y, 0f);
         }
     }
