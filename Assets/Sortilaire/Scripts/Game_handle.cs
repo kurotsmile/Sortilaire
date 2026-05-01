@@ -7,6 +7,7 @@ public class Game_handle : MonoBehaviour
 {
     [Header("Object Game")]
     public Carrot.Carrot carrot;
+    public IronSourceAds ads;
     public Manager_Card manager_card;
     public ai_chat_tip ai_chat;
 
@@ -23,6 +24,8 @@ public class Game_handle : MonoBehaviour
     void Start()
     {
         this.carrot.Load_Carrot(this.check_exit_app);
+        this.ads.On_Load();
+        this.carrot.act_buy_ads_success=this.ads.RemoveAds;
         this.manager_card.reset();
 
         this.panel_home.SetActive(true);
@@ -56,7 +59,7 @@ public class Game_handle : MonoBehaviour
 
     public void btn_start_game()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.carrot.play_sound_click();
         this.panel_home.SetActive(false);
         this.panel_play.SetActive(true);
@@ -64,7 +67,7 @@ public class Game_handle : MonoBehaviour
 
     public void btn_back_home()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.carrot.play_sound_click();
         this.panel_home.SetActive(true);
         this.panel_play.SetActive(false);
@@ -79,7 +82,7 @@ public class Game_handle : MonoBehaviour
 
     public void btn_reset_game()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.play_sound(3);
         this.manager_card.reset();
         this.panel_play.SetActive(true);
@@ -94,7 +97,7 @@ public class Game_handle : MonoBehaviour
 
     public void show_game_win()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.play_sound(4);
         this.panel_win.SetActive(true);
 
@@ -132,8 +135,8 @@ public class Game_handle : MonoBehaviour
 
     public void btn_setting()
     {
-        this.carrot.ads.show_ads_Interstitial();
-        this.carrot.ads.Destroy_Banner_Ad();
+        this.ads.show_ads_Interstitial();
+        this.ads.HideBannerAd();
         Carrot.Carrot_Box box_setting=this.carrot.Create_Setting();
         box_setting.set_act_before_closing(act_after_close_setting);
     }
@@ -149,7 +152,7 @@ public class Game_handle : MonoBehaviour
             this.sound[0].Play();
         else
             this.sound[0].Stop();
-        this.carrot.ads.create_banner_ads();
+        this.ads.ShowBannerAd();
     }
 
     private void update_count_win_txt_ui()
@@ -159,7 +162,7 @@ public class Game_handle : MonoBehaviour
 
     public void show_guide()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.carrot.play_sound_click();
         this.ai_chat.btn_show_or_hide_guide_play();
     }
@@ -178,7 +181,7 @@ public class Game_handle : MonoBehaviour
 
     public void btn_next_tip_home()
     {
-        this.carrot.ads.show_ads_Interstitial();
+        this.ads.show_ads_Interstitial();
         this.carrot.play_sound_click();
         this.ai_chat.next_tip_home();
     }
